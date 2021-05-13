@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config-map-mse 
+  namespace: default
+data:
+  application.yml: |-
+    app:
+      env:
+        color: purple       
+    server:
+        port: 8080

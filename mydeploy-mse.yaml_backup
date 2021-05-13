@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mydeploy-mse
+  name: mydeploy-mse
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mydeploy-mse
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mydeploy-mse
+    spec:
+      containers:
+      - image: niranjanv64/ms-user-static-ext
+        name: ms-user-static-ext
+        ports:
+        - containerPort: 8080
+        args: ["-Dspring.config.location=/mounts/application.yml","org.sj.msuserstaticext.MsUserStaticExtApplication"]
+        resources: {}
+        envFrom:                                  
+        - configMapRef:
+           name: my-config-map-mse 
+status: {}
