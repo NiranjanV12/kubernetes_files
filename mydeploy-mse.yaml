@@ -21,12 +21,12 @@ spec:
       - image: niranjanv64/ms-user-static-ext
         name: ms-user-static-ext
         ports:
-        - containerPort: 8080
+        - containerPort: 7070
         args: ["-Dspring.config.location=/opt/config/application.yml","org.sj.msuserstaticext.MsUserStaticExtApplication"]
         resources: {}
-        env:
-          - name: JAVA_OPTS
-            value: "-Dspring.config.location=/opt/config"
+        #env:
+        #  - name: JAVA_OPTS
+        #    value: "-Dspring.config.location=/opt/config"
         volumeMounts:
           - name: my-config-map-mse
             mountPath: /opt/config

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: persistent-vol
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  claimRef:
+    name: persistent-vol-claim
+    namespace: default
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadOnlyMany
+  hostPath: # *****not for production
+    path: "/opt/mount-data"
+  #gcePersistentDisk:
+  #  fsType: ext4
+  #  pdName: my-data-disk

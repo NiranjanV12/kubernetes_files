@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mydeploy-msu
+  name: mydeploy-msu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mydeploy-msu
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mydeploy-msu
+    spec:
+      containers:
+      - image: niranjanv64/ms-user-repo
+        name: ms-user-repo
+        ports:
+        - containerPort: 8080
+        args: ["-Dspring.config.location=/opt/config/application.yml","org.sj.msuserrepo.MsUserRepoApplication"]
+        resources: {}
+        #env:
+        #  - name: JAVA_OPTS
+        #    value: "-Dspring.config.location=/opt/config"
+        volumeMounts:
+          - name: my-config-map-msu
+            mountPath: /opt/config
+        #envFrom:
+         #- secretRef:
+         #name: jyt-secret    
+      volumes:
+        - name: my-config-map-msu
+          configMap:
+            name: my-config-map-msu
+status: {}

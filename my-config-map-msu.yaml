@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config-map-msu 
+  namespace: default
+data:
+  application.yml: |-
+    spring:
+      application:
+            name: ms-user-repo
+      main:
+        allow-bean-definition-overriding: true
+      datasource:
+        url: jdbc:postgresql://10.96.229.1:5432/mydb
+        username: mydbuser
+        password: mydbuser
+        #password: ENC(MR4CZu0nYZ0zQoQYqeslJiPPOqIIbqyg)
+    server:
+        port: 8080

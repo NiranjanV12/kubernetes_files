@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-msu-jasypt
+  namespace: default
+data:
+  application.yml: |-
+    spring:
+      application:
+            name: ms-user-repo
+      main:
+        allow-bean-definition-overriding: true
+      datasource:
+        url: jdbc:postgresql://10.96.229.1:5432/mydb
+        username: mydbuser
+        password: ENC(fCTq4xYbhblAMyxIaNceGPDwdEvcqMkT)
+    server:
+        port: 9090
+    app:
+      env:
+        servUrl1: http://10.106.146.110:7070/ms-user-static-ext
+

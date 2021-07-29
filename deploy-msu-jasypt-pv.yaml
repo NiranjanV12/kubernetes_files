@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: deploy-msu-jasypt
+  name: deploy-msu-jasypt
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: deploy-msu-jasypt
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: deploy-msu-jasypt
+    spec:
+      containers:
+      - image: niranjanv64/ms-user-repo:jasypt-v4
+        name: ms-user-repo
+        ports:
+        - containerPort: 9090
+        args: ["-Dspring.config.location=/opt/config/application.yml","org.sj.msuserrepo.MsUserRepoApplication"]
+        resources: {}
+        #env:
+        #  - name: JAVA_OPTS
+        #    value: "-Dspring.config.location=/opt/config"
+        volumeMounts:
+          - name: cm-msu-jasypt
+            mountPath: /opt/config
+          - name: persistent-vol-1
+            mountPath: /mountdata
+        envFrom:
+        - secretRef:
+           name: secret-jasypt    
+      volumes:
+        - name: cm-msu-jasypt
+          configMap:
+            name: cm-msu-jasypt
+        - name: persistent-vol-1
+          persistentVolumeClaim:
+             claimName: persistent-vol-claim
+             readOnly: true
+status: {}
