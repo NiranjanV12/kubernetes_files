@@ -10,7 +10,7 @@ spec:
       port: 7070
       targetPort: 7070
       nodePort: 30007
-  clusterIP: 10.106.80.200
+  clusterIP: 10.8.10.10 #10.8.0.0/20
   type: LoadBalancer
 status:
   loadBalancer:
