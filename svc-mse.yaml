@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-mse
+spec:
+  selector:
+    app: mydeploy-mse
+  ports:
+    - protocol: TCP
+      port: 7070
+      targetPort: 7070
+      nodePort: 30007
+  clusterIP: 10.106.80.200
+  type: NodePort 

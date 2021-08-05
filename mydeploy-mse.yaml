@@ -18,7 +18,7 @@ spec:
         app: mydeploy-mse
     spec:
       containers:
-      - image: niranjanv64/ms-user-static-ext
+      - image: niranjanv64/ms-user-static-ext:v1
         name: ms-user-static-ext
         ports:
         - containerPort: 7070

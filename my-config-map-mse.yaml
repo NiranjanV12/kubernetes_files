@@ -8,6 +8,6 @@ data:
     app:
       env:
         color: black      
-        servUrl1: http://localhost:6060/ms-user-static
+        servUrl1: http://10.106.80.197:6060/ms-user-static
     server:
         port: 7070

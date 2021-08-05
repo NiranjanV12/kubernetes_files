@@ -25,10 +25,10 @@ spec:
         args: ["-Dspring.config.location=/opt/config/application.yml","org.sj.msuserstatic.MsUserStaticApplication"]
         resources: {}
         volumeMounts:
-          - name: my-config-map-mse
+          - name: my-config-map-ms
             mountPath: /opt/config
       volumes:
-        - name: my-config-map-mse
+        - name: my-config-map-ms
           configMap:
-            name: my-config-map-mse
+            name: my-config-map-ms
 status: {}
