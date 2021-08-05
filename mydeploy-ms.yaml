@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mydeploy-ms
+  name: mydeploy-ms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mydeploy-ms
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mydeploy-ms
+    spec:
+      containers:
+      - image: niranjanv64/ms-user-static:v1
+        name: ms-user-static
+        ports:
+        - containerPort: 6060
+        args: ["-Dspring.config.location=/opt/config/application.yml","org.sj.msuserstatic.MsUserStaticApplication"]
+        resources: {}
+        volumeMounts:
+          - name: my-config-map-mse
+            mountPath: /opt/config
+      volumes:
+        - name: my-config-map-mse
+          configMap:
+            name: my-config-map-mse
+status: {}
