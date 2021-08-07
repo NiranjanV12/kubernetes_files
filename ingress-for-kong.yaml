@@ -8,7 +8,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /microsvc-static1/health
+      - path: /microsvc-static1/health  #*
         backend:
           serviceName: microsvc-static1
           servicePort: 7050
