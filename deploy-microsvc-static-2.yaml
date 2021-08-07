@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: deploy-microsvc-static-2
+  name: deploy-microsvc-static-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deploy-microsvc-static-2
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: deploy-microsvc-static-2
+    spec:
+      containers:
+      - image: niranjanv64/microsvc-static-2:v1
+        name: microsvc-static-2
+        ports:
+        - containerPort: 7051
+        args: ["-Dspring.config.location=/opt/config/application.yml","com.microsvc.static2.Static2Application"] 
+        # niranjanv64/microsvc-static2:v1 conatins a app.yaml file inside and is overridden by configMap
+        #-Dapp.env.servUrl1=http://192.168.0.111:7051/microsvc-static-1
+        resources: {}
+        volumeMounts:
+          - name: cm-microsvc-static-2
+            mountPath: /opt/config
+      volumes:
+        - name: cm-microsvc-static-2
+          configMap:
+            name: cm-microsvc-static-2
+status: {}
