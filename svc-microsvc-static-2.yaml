@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-microsvc-static-2
+spec:
+  selector:
+    app: deploy-microsvc-static-2
+  ports:
+    - protocol: TCP
+      port: 7051
+      targetPort: 7051
+  clusterIP: 10.124.80.21
+  type: ClusterIP 
