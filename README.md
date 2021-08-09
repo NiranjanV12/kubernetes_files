@@ -10,3 +10,4 @@ my-config-map-ms.yaml
 mydeploy-ms.yaml
 mydeploy-mse.yaml
 
+kubectl patch service svc-microsvc-static-1 -p '{"metadata":{"annotations":{"konghq.com/plugins":"kp-key-auth"}}}'
