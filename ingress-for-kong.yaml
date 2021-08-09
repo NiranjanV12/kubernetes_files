@@ -9,19 +9,19 @@ spec:
   rules:
   - http:
       paths:
-      - path: /microsvc-static1/health  #*
+      - path: /microsvc-static-1/health  #*
         backend:
-          serviceName: microsvc-static1
+          serviceName: svc-microsvc-static-1
           servicePort: 7050
-      - path: /microsvc-static1/callOtherService
+      - path: /microsvc-static-1/callOtherService
         backend:
-          serviceName: microsvc-static1
+          serviceName: svc-microsvc-static-1
           servicePort: 7050
-      - path: /microsvc-static2/health
+      - path: /microsvc-static-2/health
         backend:
-          serviceName: microsvc-static2
+          serviceName: svc-microsvc-static-2
           servicePort: 7051
-      - path: /microsvc-static2/callOtherService
+      - path: /microsvc-static-2/callOtherService
         backend:
-          serviceName: microsvc-static2
+          serviceName: svc-microsvc-static-2
           servicePort: 7051

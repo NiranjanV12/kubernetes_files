@@ -5,7 +5,7 @@ metadata:
   namespace: default
 data:
   application.yml: |-
-    spring:
+   spring:
       application:
                name: microsvc-static-1
       main:

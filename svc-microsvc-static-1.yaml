@@ -11,5 +11,5 @@ spec:
     - protocol: TCP
       port: 7050
       targetPort: 7050
-  clusterIP: 10.124.80.20
+  clusterIP: 10.8.14.120
   type: ClusterIP 
