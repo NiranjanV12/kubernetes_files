@@ -17,6 +17,14 @@ spec:
         backend:
           serviceName: svc-microsvc-static-1
           servicePort: 7050
+      - path: /microsvc-static-1/callOtherServiceJWT
+        backend:
+          serviceName: svc-microsvc-static-1
+          servicePort: 7050
+      - path: /microsvc-static-1/callOtherServiceJWTHC
+        backend:
+          serviceName: svc-microsvc-static-1
+          servicePort: 7050    
       - path: /microsvc-static-2/health
         backend:
           serviceName: svc-microsvc-static-2

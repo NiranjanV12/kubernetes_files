@@ -16,8 +16,12 @@ data:
    app:
     env:
      color: green
-     servUrl1: http://localhost:7051/microsvc-static-2
-   
+     servUrl1: http://10.96.10.222:7051/microsvc-static-2
+     at_username: user1
+     at_password: pass@123
+     at_grant_type: password
+     at_client_id: myclient
+     at_Url: http://10.96.229.1:8080/auth/realms/myrealm/protocol/openid-connect/token
    
    logging:
        file:

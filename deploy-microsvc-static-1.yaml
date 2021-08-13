@@ -18,7 +18,7 @@ spec:
         app: deploy-microsvc-static-1
     spec:
       containers:
-      - image: niranjanv64/microsvc-static-1:v1
+      - image: niranjanv64/microsvc-static-1:v2
         name: microsvc-static-1
         ports:
         - containerPort: 7050
