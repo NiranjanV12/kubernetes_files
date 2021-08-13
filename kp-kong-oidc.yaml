@@ -1,0 +1,16 @@
+#suppose u r using kong oidc image
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: kp-kong-oidc
+  #namespace: dev
+config:
+  client_id: kong-client # is been created in keycloak
+  #client_secret: c382527a-258f-4267-8290-d9cd2d3e4e86 # kong-client secret from keycloak
+  client_secret: c12d8d2d-937d-48d7-a560-b83a362566ca
+  discovery: http://34.134.169.12:8080/auth/realms/myrealm/.well-known/openid-configuration
+  scope: openid email profile
+  logout_path: /oidc_logout
+  #bearer_only: "yes" #new
+  introspection_endpoint: http://34.134.169.12:8080/auth/realms/myrealm/protocol/openid-connect/token/introspect #new
+plugin: oidc

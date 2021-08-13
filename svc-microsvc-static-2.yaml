@@ -3,7 +3,8 @@ kind: Service
 metadata:
   name: svc-microsvc-static-2
   annotations:
-    konghq.com/plugins: kp-app-jwt
+     konghq.com/plugins: kp-kong-oidc-bo
+    #konghq.com/plugins: kp-app-jwt
     #konghq.com/plugins: kp-key-auth
 spec:
   selector:

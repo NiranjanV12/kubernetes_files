@@ -24,7 +24,7 @@ data:
      at_grant_type: password
      at_client_id: myclient
      #at_Url: http://10.96.229.1:8080/auth/realms/myrealm/protocol/openid-connect/token
-     at_Url: http://34.122.195.189:8080/auth/realms/myrealm/protocol/openid-connect/token
+     at_Url: http://34.134.169.12:8080/auth/realms/myrealm/protocol/openid-connect/token
    logging:
        file:
          name: logs/microsvc-static-1/microsvc-static-1.log
