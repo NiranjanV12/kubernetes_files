@@ -16,13 +16,15 @@ data:
    app:
     env:
      color: green
-     servUrl1: http://10.96.10.222:7051/microsvc-static-2
+     #servUrl1: http://10.96.10.222:7051/microsvc-static-2
+     #servUrl1: http://10.8.13.21:7051/microsvc-static-2
+     servUrl1: http://35.193.185.233/microsvc-static-2 #check with internal
      at_username: user1
      at_password: pass@123
      at_grant_type: password
      at_client_id: myclient
-     at_Url: http://10.96.229.1:8080/auth/realms/myrealm/protocol/openid-connect/token
-   
+     #at_Url: http://10.96.229.1:8080/auth/realms/myrealm/protocol/openid-connect/token
+     at_Url: http://34.122.195.189:8080/auth/realms/myrealm/protocol/openid-connect/token
    logging:
        file:
          name: logs/microsvc-static-1/microsvc-static-1.log

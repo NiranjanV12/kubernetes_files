@@ -15,7 +15,8 @@ data:
    app:
     env:
      color: white
-     servUrl1: http://localhost:7050/microsvc-static-1
+     #servUrl1: http://10.8.14.120:7050/microsvc-static-1
+     servUrl1: http://35.193.185.233/microsvc-static-1
    logging:
        file:
          name: logs/microsvc-static-2/microsvc-static-2.log

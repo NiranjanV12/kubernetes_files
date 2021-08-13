@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: svc-microsvc-static-2
   annotations:
-    konghq.com/plugins: app-jwt
+    konghq.com/plugins: kp-app-jwt
     #konghq.com/plugins: kp-key-auth
 spec:
   selector:
@@ -12,6 +12,6 @@ spec:
     - protocol: TCP
       port: 7051
       targetPort: 7051
- #clusterIP: 10.124.80.21
-  clusterIP: 10.96.10.222
+  clusterIP: 10.8.13.21
+  #clusterIP: 10.96.10.222
   type: ClusterIP 
