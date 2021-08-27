@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-for-login
+  annotations:
+    #konghq.com/strip-path: "true"
+    kubernetes.io/ingress.class: kong
+    konghq.com/plugins: kong-oidc-plugin-example
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /microsvc-static-1/callOtherServiceJWT
+        backend:
+          serviceName: svc-microsvc-static-1
+          servicePort: 7050
