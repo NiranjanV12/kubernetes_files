@@ -25,7 +25,14 @@ spec:
         args: ["-Dspring.config.location=/opt/config/application.yml","com.microsvc.static1.Static1Application"] 
         # niranjanv64/microsvc-static1:v1 conatins a app.yaml file inside and is overridden by configMap
         #-Dapp.env.servUrl1=http://192.168.0.111:7051/microsvc-static-2
-        resources: {}
+        resources:
+         limits:
+            cpu: 1000m
+            memory: 1Gi
+         requests:
+            cpu: 500m
+            memory: 800Mi
+        #resources: {}
         volumeMounts:
           - name: cm-microsvc-static-1
             mountPath: /opt/config
