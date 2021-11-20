@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-sun-rc-3
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 8Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath: # *****not for production
+    path: "/my-app-mount/es2"
+  #gcePersistentDisk:
+  #  fsType: ext4
+  #  pdName: my-data-disk

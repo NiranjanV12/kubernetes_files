@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-sun-rc-1
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  claimRef:
+    name: data-sunrc-postgres-postgresql-0
+    namespace: default
+  capacity:
+    storage: 8Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath: # *****not for production
+    path: "/my-app-mount/db"
+  #gcePersistentDisk:
+  #  fsType: ext4
+  #  pdName: my-data-disk
