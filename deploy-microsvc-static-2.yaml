@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   creationTimestamp: null
+  namespace: ns-my-dev
   labels:
     app: deploy-microsvc-static-2
   name: deploy-microsvc-static-2

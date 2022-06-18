@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cm-microsvc-static-1
-  namespace: default
+  namespace: ns-my-dev
 data:
   application.yml: |-
    spring:
