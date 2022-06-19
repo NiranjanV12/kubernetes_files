@@ -1,0 +1,29 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  creationTimestamp: null
+  namespace: monitoring
+  labels:
+    prometheus: promstack-kube-prometheus-prometheus
+    role: alert-rules
+    app: kube-prometheus-stack
+    release: promstack
+    temp: temp
+  name: prometheus-example-rules
+spec:
+  groups:
+  - name: ./example.rules
+    rules:
+    - alert: Myhttp404Alert
+      expr: rate(kong_http_status{code="404"}[1m])>1
+      for: 1m
+      labels:
+         severity: warning
+      annotations:
+         description: aaaaa
+         runbook_url: https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook.md#alert-name-targetdown
+         summary: http errorrrs.
+    - alert: Node down
+      expr: up{job="node_exporter"} == 0
+      #- alert: ExampleAlert
+      #expr: vector(1)   

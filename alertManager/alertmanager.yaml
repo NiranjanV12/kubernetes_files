@@ -1,0 +1,19 @@
+global:
+  resolve_timeout: 5m
+route:
+  group_by: [Alertname]
+  # Send all notifications to me.
+  receiver: email-me
+  group_wait: 30s #default 30s
+  group_interval: 1m #default 5m
+  repeat_interval: 2m #default 4h
+
+receivers:
+- name: email-me
+  email_configs:
+  - to: niranjanvaity@gmail.com
+    from: niranjanvaity@gmail.com
+    smarthost: smtp.gmail.com:587
+    auth_username: "niranjanvaity"
+    auth_identity: "niranjanvaity@gmail.com" #"$GMAIL_ACCOUNT"
+    auth_password: "kigtwgnhloskofww" #"$GMAIL_AUTH_TOKEN"  
