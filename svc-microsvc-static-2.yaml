@@ -14,6 +14,6 @@ spec:
     - protocol: TCP
       port: 7051
       targetPort: 7051
-  clusterIP: 10.8.13.21
-  #clusterIP: 10.96.10.222
+      #clusterIP: 10.8.13.21
+  clusterIP: 10.96.10.222
   type: ClusterIP 

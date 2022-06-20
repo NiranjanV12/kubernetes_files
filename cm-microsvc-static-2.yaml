@@ -16,7 +16,8 @@ data:
     env:
      color: white
      #servUrl1: http://10.8.14.120:7050/microsvc-static-1
-     servUrl1: http://35.193.185.233/microsvc-static-1
+     #servUrl1: http://35.193.185.233/microsvc-static-1
+     servUrl1: http://10.96.229.174:32048/microsvc-static-1
    logging:
        file:
          name: logs/microsvc-static-2/microsvc-static-2.log
@@ -28,5 +29,5 @@ data:
            org.springframework.web: ERROR
            com.microsvc: INFO
            org.hibernate: ERROR
-       pattern:
-          console: 
+#       pattern:
+#          console: 

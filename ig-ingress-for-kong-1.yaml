@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: microsvc2-health
+  namespace: ns-my-dev
+  annotations:
+    #konghq.com/strip-path: "true"
+    #kubernetes.io/ingress.class: kong
+    # konghq.com/plugins: kp-kong-oidc
+spec:
+  ingressClassName: kong      
+  rules:
+  - http:
+      paths:
+      - path: /microsvc-static-2/health  # accepts /microsvc-static-1*
+        pathType: ImplementationSpecific  #Prefix
+        backend:
+          service:
+            name: svc-microsvc-static-2
+            port:
+              number: 7051

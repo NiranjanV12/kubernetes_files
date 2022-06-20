@@ -37,6 +37,6 @@ data:
            org.springframework.web: ERROR
            com.microsvc: INFO
            org.hibernate: ERROR
-       pattern:
-          console: 
+#       pattern:
+#          console: 
   

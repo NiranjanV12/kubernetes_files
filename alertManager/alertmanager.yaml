@@ -16,4 +16,4 @@ receivers:
     smarthost: smtp.gmail.com:587
     auth_username: "niranjanvaity"
     auth_identity: "niranjanvaity@gmail.com" #"$GMAIL_ACCOUNT"
-    auth_password: "kigtwgnhloskofww" #"$GMAIL_AUTH_TOKEN"  
+    auth_password: "putyourapppass" #"$GMAIL_AUTH_TOKEN"  
