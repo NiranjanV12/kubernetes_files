@@ -1,0 +1,39 @@
+
+https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/
+git clone https://github.com/nginxinc/kubernetes-ingress.git --branch v2.3.0
+follow website insturctions and complete
+.......
+
+cat common/nginx-config.yaml
+
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nginx-config
+  namespace: nginx-ingress
+data:
+  proxy-protocol: "False"
+  real-ip-header: "proxy_protocol"
+  set-real-ip-from: "0.0.0.0/0"
+  
+  
+kubectl apply -f common/nginx-config.yaml
+
+-----
+
+kubectl get svc nginx-ingress --namespace=nginx-ingress
+
+map domain
+
+dig +short 
+nslookup <dns-name>
+
+
+-----
+deploy helm kong in same namespace as nginx
+
+edit kong svc and add 1 line annotatiom
+networking.gke.io/load-balancer-type: "Internal"
+#internal ip will be assigned in few minutes
+----
+
