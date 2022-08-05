@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cm-microsvc-static-1
-  namespace: nginx-ingress
+  namespace: ingress-nginx
 data:
   application.yml: |-
    spring:

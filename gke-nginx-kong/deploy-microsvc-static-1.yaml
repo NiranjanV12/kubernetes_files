@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   creationTimestamp: null
-  namespace: nginx-ingress
+  namespace: ingress-nginx
   labels:
     app: deploy-microsvc-static-1
   name: deploy-microsvc-static-1
