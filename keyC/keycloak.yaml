@@ -48,7 +48,7 @@ spec:
         - name: KC_DB_USERNAME
           value: "postgres"
         - name: KC_DB_PASSWORD
-          value: "postgres"
+          value: "minda-i31"
 #        - name: KEYCLOAK_USER
 #          value: "user1"
 #        - name: KEYCLOAK_PASSWORD
@@ -60,11 +60,11 @@ spec:
 #        - name: DB_ADDR
 #          value: "10.96.229.228:5432"
         - name: KC_HOSTNAME
-          value: "nginxc3.niranjanv12.dev"  #"35.222.137.118:30007"  
+          value: "35.202.18.159:30007"   #"nginxc3.niranjanv12.dev"  #"35.222.137.118:30007"  
         - name: KC_DB
           value: postgres
         - name: KC_DB_URL_HOST
-          value: "34.125.88.63"  
+          value: "35.226.227.245"  
 #        - name: KC_HTTP_ENABLED  
 #          value: "true"
 #        - name: PROXY_ADDRESS_FORWARDING
@@ -81,4 +81,12 @@ spec:
         readinessProbe:
           httpGet:
             path: /realms/master
-            port: 8080
+            port: 8080 
+        volumeMounts:        
+        - name: persistent-vol-1
+          mountPath: /opt/keycloak/themes
+      volumes:
+      - name: persistent-vol-1
+        persistentVolumeClaim:
+           claimName: persistent-vol-claim
+           readOnly: true      

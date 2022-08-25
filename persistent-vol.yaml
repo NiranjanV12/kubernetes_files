@@ -17,4 +17,4 @@ spec:
     path: "/opt/mount-data"
   #gcePersistentDisk:
   #  fsType: ext4
-  #  pdName: my-data-disk
+  #  pdName: my-data-disk   ### create disk and attch to vm transfer files and detach VM and attach here
