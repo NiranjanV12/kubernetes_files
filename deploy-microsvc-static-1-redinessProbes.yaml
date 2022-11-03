@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  namespace: ns-my-dev
+  annotations:
+    reloader.stakater.com/auto: "true"
+  labels:
+    app: deploy-microsvc-static-1
+  name: deploy-microsvc-static-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deploy-microsvc-static-1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: deploy-microsvc-static-1
+    spec:
+      containers:
+      - image: niranjanv64/microsvc-static-1:postg-db-k8s-health-ready-v1.0
+        name: microsvc-static-1
+        ports:
+        - containerPort: 7050
+          #"-Xlog:gc*" , "-Xlog:task*=debug","-Xlog:gc+heap=trace", "-Xlog:ref*=debug","-Xlog:stringdedup*=debug","-Xlog:age*=debug",
+        args: ["-javaagent:./app/jmx_prometheus_javaagent-0.16.1.jar=8080:/app/config.yaml", "-XX:MaxRAMPercentage=75.0", "-Xloggc:/opt/mygc.log", "-XX:+PrintFlagsFinal","-Dspring.config.location=/opt/config/application.yml","com.microsvc.static1.Static1Application"] 
+        # niranjanv64/microsvc-static1:v1 conatins a app.yaml file inside and is overridden by configMap
+        #-Dapp.env.servUrl1=http://192.168.0.111:7051/microsvc-static-2
+        resources:
+         limits:
+            cpu: 1000m
+            memory: 1Gi
+         requests:
+            cpu: 100m
+            memory: 500Mi
+        #resources: {}
+        livenessProbe:
+          httpGet:
+           path: /microsvc-static-1/health
+           port: 7050
+           #httpHeaders:
+           #- name: Custom-Header
+           #  value: Awesome
+          initialDelaySeconds: 15
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+           path: /microsvc-static-1/ready
+           port: 7050
+           #httpHeaders:
+           #- name: Custom-Header
+           #  value: Awesome
+          initialDelaySeconds: 30
+          periodSeconds: 60  
+        volumeMounts:
+          - name: cm-microsvc-static-1
+            mountPath: /opt/config
+      volumes:
+        - name: cm-microsvc-static-1
+          configMap:
+            name: cm-microsvc-static-1
+status: {}

@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: prometheus-vol
+  labels:
+    prometheus: promstack-kube-prometheus-prometheus
+spec:
+  replicas: 1
+  storage:
+    volumeClaimTemplate:
+      spec:
+        storageClassName: ""      
+        selector:
+          matchLabels:
+            app: pv-prom-storage
+        resources:
+          requests:
+            storage: 10Gi
