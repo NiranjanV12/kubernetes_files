@@ -8,10 +8,6 @@ prometheus:
     storageSpec:
       volumeClaimTemplate:
         spec:
-          storageClassName: ""      
-          selector:
-           matchLabels:
-             app: pv-prom-storage      
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
