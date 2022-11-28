@@ -2,19 +2,24 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: pv-prom-storage
-  namespace: monitoring
   labels:
     app: pv-prom-storage
     type: local
 spec:
-  capacity:
-    storage: 10Gi
-  storageClassName: ""
   claimRef:
     name: prometheus-promstack-kube-prometheus-prometheus-db-prometheus-promstack-kube-prometheus-prometheus-0
-    namespace: monitoring
+    namespace: ondc-monitoring
+  capacity:
+    storage: 10Gi
   accessModes:
-  - ReadWriteOnce # required
-  hostPath: # *****not for production
-    path: "/opt/prom-store"
-  
+  - ReadWriteOnce
+  local:
+    path: /data/prom-store
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - node1
