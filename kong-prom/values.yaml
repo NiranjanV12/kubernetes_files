@@ -1,3 +1,79 @@
+#defaultRules:
+#  create: true
+#  rules:
+#    alertmanager: true
+#    etcd: false
+#    configReloaders: false
+#    general: true
+#    k8s: false
+#    kubeApiserverAvailability: false
+#    kubeApiserverBurnrate: false
+#    kubeApiserverHistogram: false
+#    kubeApiserverSlos: false
+#    kubeControllerManager: false
+#    kubelet: false
+#    kubeProxy: false
+#    kubePrometheusGeneral: false
+#    kubePrometheusNodeRecording: false
+#    kubernetesApps: false
+#    kubernetesResources: false
+#    kubernetesStorage: false
+#    kubernetesSystem: false
+#    kubeSchedulerAlerting: false
+#    kubeSchedulerRecording: false
+#    kubeStateMetrics: false
+#    network: false
+#    node: false
+#    nodeExporterAlerting: false
+#    nodeExporterRecording: false
+#    prometheus: false
+#    prometheusOperator: false
+
+prometheus:
+  prometheusSpec:
+    scrapeInterval: 10s
+  server:
+    persistentVolume:
+      enabled: true
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: ""      
+          selector:
+           matchLabels:
+             app: pv-prom-storage      
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi  
+grafana:
+  persistence:
+    enabled: true  # enable persistence using Persistent Volumes
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+      - name: 'default' # Configure a dashboard provider file to
+        orgId: 1        # put Kong dashboard into.
+        folder: ''
+        type: file
+        disableDeletion: false
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/default
+  ingress: 
+    enabled: true
+    path: /grafanaa
+  dashboards:
+    default:
+      kong-dash:
+        gnetId: 7424  # Install the following Grafana dashboard in the
+        revision: 7  #5   # instance: https://grafana.com/dashboards/7424
+        datasource: Prometheus
+      kic-dash:
+        gnetId: 15662
+        datasource: Prometheus
 prometheus:
   prometheusSpec:
     scrapeInterval: 10s
