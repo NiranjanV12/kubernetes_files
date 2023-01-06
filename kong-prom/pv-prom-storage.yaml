@@ -8,9 +8,9 @@ metadata:
 spec:
   claimRef:
     name: prometheus-promstack-kube-prometheus-prometheus-db-prometheus-promstack-kube-prometheus-prometheus-0
-    namespace: ondc-monitoring
+    namespace: ns-monitoring
   capacity:
-    storage: 10Gi
+    storage: 2Gi
   accessModes:
   - ReadWriteOnce
   local:
