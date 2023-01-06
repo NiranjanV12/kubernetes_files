@@ -2,15 +2,15 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: pv-grafana
-  namespace: ondc-monitoring
+  namespace: ns-monitoring
   labels:
     type: local
 spec:
   claimRef:
     name: promstack-grafana
-    namespace: ondc-monitoring
+    namespace: ns-monitoring
   capacity:
-    storage: 10Gi
+    storage: 2Gi
   accessModes:
     - ReadWriteOnce
   local:
